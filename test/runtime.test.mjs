@@ -170,3 +170,9 @@ test('MCP errors expose stable sanitized HTTP status metadata', async () => {
     assert.ok(!JSON.stringify(output).includes('secret body'));
   });
 });
+
+test('snapshot preserves request properties named examples', () => {
+ const operation = catalog(snapshot, policy, 'standard').operations.find(item => item.id === 'POST /api/assistant/generate-regex');
+ const referenced = operation.inputSchema.properties.body.$ref.replace('#/$defs/', '');
+ assert.ok(operation.inputSchema.$defs[referenced].properties.examples);
+});
