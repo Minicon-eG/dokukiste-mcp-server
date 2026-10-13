@@ -18,3 +18,7 @@ export function object(value: unknown): JsonObject {
 }
 export function array(value: unknown): readonly unknown[] { return Array.isArray(value) ? value : []; }
 export function text(value: unknown, fallback = ''): string { return typeof value === 'string' ? value : fallback; }
+
+export function problem(code: string, message: string, status?: number): Error {
+  return new Error(message, { cause: Object.freeze({ code, status }) });
+}

@@ -1,7 +1,7 @@
-import { object, type Configuration, type JsonObject, type Operation } from './types.js';
+import { object, problem, type Configuration, type JsonObject, type Operation } from './types.js';
 
 export async function bytes(response: Response, max: number): Promise<Buffer> {
-  if (Number(response.headers.get('content-length') ?? 0) > max) { await response.body?.cancel(); throw new Error('Response exceeds DOKUKISTE_MAX_BYTES'); }
+  if (Number(response.headers.get('content-length') ?? 0) > max) { await response.body?.cancel(); throw problem('PAYLOAD_TOO_LARGE', 'Response exceeds DOKUKISTE_MAX_BYTES'); }
   if (!response.body) return Buffer.alloc(0);
   const reader = response.body.getReader();
   const chunks: Uint8Array[] = [];
@@ -11,7 +11,7 @@ export async function bytes(response: Response, max: number): Promise<Buffer> {
       const part = await reader.read();
       if (part.done) break;
       size += part.value.byteLength;
-      if (size > max) { await reader.cancel(); throw new Error('Response exceeds DOKUKISTE_MAX_BYTES'); }
+      if (size > max) { await reader.cancel(); throw problem('PAYLOAD_TOO_LARGE', 'Response exceeds DOKUKISTE_MAX_BYTES'); }
       chunks.push(part.value);
     }
   } finally { reader.releaseLock(); }
@@ -22,9 +22,9 @@ function file(value: unknown, max: number): { blob: Blob; filename: string } {
   const input = object(value);
   if (typeof input.filename !== 'string' || /[\r\n/\\]/.test(input.filename)) throw new Error('Invalid upload filename');
   if (typeof input.dataBase64 !== 'string' || !/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(input.dataBase64)) throw new Error('Invalid base64 upload');
-  if (input.dataBase64.length > Math.ceil(max / 3) * 4) throw new Error('Upload exceeds DOKUKISTE_MAX_BYTES');
+  if (input.dataBase64.length > Math.ceil(max / 3) * 4) throw problem('PAYLOAD_TOO_LARGE', 'Upload exceeds DOKUKISTE_MAX_BYTES');
   const content = Buffer.from(input.dataBase64, 'base64');
-  if (content.byteLength > max) throw new Error('Upload exceeds DOKUKISTE_MAX_BYTES');
+  if (content.byteLength > max) throw problem('PAYLOAD_TOO_LARGE', 'Upload exceeds DOKUKISTE_MAX_BYTES');
   return { blob: new Blob([new Uint8Array(content)], { type: typeof input.mimeType === 'string' ? input.mimeType : 'application/octet-stream' }), filename: input.filename };
 }
 
@@ -34,7 +34,7 @@ function encodedBody(operation: Operation, input: unknown, max: number): BodyIni
   if (operation.contentType === 'multipart/form-data') {
     const form = new FormData();
     let total = 0;
-    function bounded(size: number): void { total += size + 512; if (total > max) throw new Error('Multipart request exceeds DOKUKISTE_MAX_BYTES'); }
+    function bounded(size: number): void { total += size + 512; if (total > max) throw problem('PAYLOAD_TOO_LARGE', 'Multipart request exceeds DOKUKISTE_MAX_BYTES'); }
     function append(name: string, value: unknown): void {
       if (Array.isArray(value)) { value.forEach(item => append(name, item)); return; }
       if (value !== null && typeof value === 'object' && 'dataBase64' in value) { const upload = file(value, max); bounded(upload.blob.size); form.append(name, upload.blob, upload.filename); return; }
@@ -81,7 +81,7 @@ export function api(config: Configuration, fetcher: typeof fetch = fetch) {
     const timeout = AbortSignal.timeout(config.timeoutMs);
     const response = await fetcher(url, { ...init, redirect: 'error', signal: signal ? AbortSignal.any([signal, timeout]) : timeout,
       headers: { 'X-API-Key': config.apiKey, Accept: 'application/json', ...init.headers } });
-    if (!response.ok) { await response.body?.cancel(); throw new Error(`DokuKiste returned HTTP ${response.status}. Check API-key scopes, permissions, enabled features and request parameters.`); }
+    if (!response.ok) { await response.body?.cancel(); throw problem('HTTP_ERROR', `DokuKiste returned HTTP ${response.status}. Check API-key scopes, permissions, enabled features and request parameters.`, response.status); }
     return response;
   }
   return Object.freeze({
@@ -90,9 +90,9 @@ export function api(config: Configuration, fetcher: typeof fetch = fetch) {
       return JSON.parse((await bytes(response, 16 * 1024 * 1024)).toString('utf8'));
     },
     async execute(operation: Operation, args: JsonObject, signal?: AbortSignal) {
-      if (!operation.readOnly && (!config.allowWrites || args.confirm !== true)) throw new Error('Writes require DOKUKISTE_ALLOW_WRITES=true and confirm=true');
+      if (!operation.readOnly && (!config.allowWrites || args.confirm !== true)) throw problem('WRITE_CONFIRMATION_REQUIRED', 'Writes require DOKUKISTE_ALLOW_WRITES=true and confirm=true');
       const body = encodedBody(operation, args.body, config.maxBytes);
-      if (typeof body === 'string' && Buffer.byteLength(body) > config.maxBytes) throw new Error('Request exceeds DOKUKISTE_MAX_BYTES');
+      if (typeof body === 'string' && Buffer.byteLength(body) > config.maxBytes) throw problem('PAYLOAD_TOO_LARGE', 'Request exceeds DOKUKISTE_MAX_BYTES');
       const headers = operation.contentType && operation.contentType !== 'multipart/form-data' ? { 'Content-Type': operation.contentType } : undefined;
       const response = await fetchResponse(requestUrl(config, operation, args), { method: operation.method, body, headers }, signal);
       const data = await bytes(response, config.maxBytes);

@@ -21,7 +21,7 @@ function schema(value: unknown): JsonObject {
   if (source.format === 'binary') return uploadSchema;
   const result: JsonObject = {};
   for (const [key, entry] of Object.entries(source)) {
-    if (['example', 'xml', 'discriminator', 'nullable', 'readOnly', 'writeOnly', 'deprecated', 'externalDocs'].includes(key)) continue;
+    if (['example', 'examples', 'x-codeSamples', 'xml', 'discriminator', 'nullable', 'readOnly', 'writeOnly', 'deprecated', 'externalDocs'].includes(key)) continue;
     if (key === 'format' && !['date','time','date-time','duration','email','hostname','ipv4','ipv6','uri','uri-reference','uuid','regex','byte','int32','int64','float','double'].includes(text(entry))) continue;
     if (key === '$ref') { result.$ref = text(entry).replace('#/components/schemas/', '#/$defs/'); continue; }
     if (key === 'properties' || key === '$defs') { result[key] = Object.fromEntries(Object.entries(object(entry)).map(([name, nested]) => [name, schema(nested)])); continue; }

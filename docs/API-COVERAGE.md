@@ -6,7 +6,7 @@ This profile contains **729 reviewed HTTP operations**, including backward-compa
 
 Live mode loads the instance's specification on startup. Reviewed methods/routes must still exist; schemas come from that instance. Newly added or unreviewed methods/routes are not automatically exposed. The weekly contract workflow detects changed/removed inputs and new unreviewed routes. Update the reviewed policy before releasing support for new operations.
 
-Browser login/registration/password flows, OAuth callbacks, webhook receivers and UI/infrastructure routes are deliberately excluded. Media and learning routes whose controller authorization is not part of the reviewed Web source are conservatively assigned to admin. The backend remains responsible for API-key scopes, feature flags, document visibility and tenant permissions; profile separation does not grant permission.
+Browser login/registration/password flows, OAuth callbacks, webhook receivers, browser video playback/media and UI/infrastructure routes are deliberately excluded. Media and learning routes whose controller authorization is not part of the reviewed Web source are conservatively assigned to admin. The backend remains responsible for API-key scopes, feature flags, document visibility and tenant permissions; profile separation does not grant permission.
 
 | Domain | Operations |
 |---|---:|

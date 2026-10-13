@@ -11,7 +11,9 @@ function result(value: unknown): CallToolResult {
 }
 function failure(error: unknown, config: Configuration): CallToolResult {
   const message = error instanceof Error ? error.message.split(config.apiKey).join('[redacted]') : 'Request failed';
-  return { content: [{ type: 'text', text: message.slice(0, 1000) }], isError: true };
+  const cause = error instanceof Error && error.cause !== null && typeof error.cause === 'object' ? object(error.cause) : {};
+  const details = { code: text(cause.code, 'REQUEST_FAILED'), message: message.slice(0, 1000), ...(typeof cause.status === 'number' ? { status: cause.status } : {}) };
+  return { content: [{ type: 'text', text: JSON.stringify({ error: details }) }], structuredContent: { error: details }, isError: true };
 }
 
 export async function createServer(config: Configuration, options: { document?: unknown; fetcher?: typeof fetch } = {}): Promise<McpServer> {

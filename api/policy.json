@@ -7821,10 +7821,10 @@
       "reason": "Controller authorization and product boundary"
     },
     "POST /api/videos/{id}/playback": {
-      "profile": "admin",
+      "profile": "excluded",
       "tag": "Video",
       "readOnly": false,
-      "reason": "Controller authorization and product boundary"
+      "reason": "Browser playback cookies and media streaming are outside the operator API"
     },
     "PUT /api/videos/{id}/transcript": {
       "profile": "admin",
@@ -7845,10 +7845,10 @@
       "reason": "Controller authorization and product boundary"
     },
     "GET /api/videos/{id}/media/{file}": {
-      "profile": "admin",
+      "profile": "excluded",
       "tag": "VideoMedia",
       "readOnly": true,
-      "reason": "Controller authorization and product boundary"
+      "reason": "Browser playback cookies and media streaming are outside the operator API"
     },
     "POST /api/Workflows/FirstSetup": {
       "profile": "admin",

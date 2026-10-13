@@ -33,6 +33,7 @@ test('profiles are disjoint and exclude browser authentication and provider call
   assert.ok(standard.length > 600 && admin.length > 400);
   assert.ok(admin.every(operation => !standardIds.has(operation.id)));
   assert.ok(standard.every(operation => !['Admin', 'ApiKeys', 'Users', 'Security'].includes(operation.tag)));
+  assert.ok([...standard, ...admin].every(operation => !['POST /api/videos/{id}/playback', 'GET /api/videos/{id}/media/{file}'].includes(operation.id)));
   assert.ok([...standard, ...admin].every(operation => !['Account', 'AuthSso', 'MailOAuth', 'GitHubWebhook', 'GetMyInvoicesWebhook'].includes(operation.tag)));
 });
 
@@ -135,6 +136,7 @@ test('real MCP stdio handshake, discovery, live schemas and authenticated HTTP r
     const count = received.length;
     const forbidden = await client.callTool({ name: prefix + '_call_operation', arguments: { operationId: product.profile === 'standard' ? 'GET /api/ApiKeys' : 'GET /api/documents', arguments: {} } });
     assert.equal(forbidden.isError, true);
+    assert.equal(forbidden.structuredContent.error.code, 'OPERATION_UNAVAILABLE');
     assert.equal(received.length, count);
     const unknown = await client.callTool({ name: prefix + '_call_operation', arguments: { operationId: 'GET https://other.test', arguments: {} } });
     assert.equal(unknown.isError, true);
@@ -153,5 +155,18 @@ test('MCP input validation prevents malformed requests before HTTP; binary downl
     const output = await client.callTool({ name: prefix + '_call_operation', arguments: { operationId: target.id, arguments: arguments_ } });
     assert.equal(output.content[1].type, 'resource');
     assert.equal(Buffer.from(output.content[1].resource.blob, 'base64').toString(), '%PDF-test');
+  });
+});
+
+test('MCP errors expose stable sanitized HTTP status metadata', async () => {
+  const id = product.profile === 'standard' ? 'GET /api/documents/detail/{id}' : 'GET /api/Admin/Version';
+  const arguments_ = product.profile === 'standard' ? { path: { id: 'document' } } : {};
+  await host(false, (_req, res) => { res.statusCode = 403; res.end(key + ' secret body'); }, async client => {
+    const output = await client.callTool({ name: prefix + '_call_operation', arguments: { operationId: id, arguments: arguments_ } });
+    assert.equal(output.isError, true);
+    assert.equal(output.structuredContent.error.code, 'HTTP_ERROR');
+    assert.equal(output.structuredContent.error.status, 403);
+    assert.ok(!JSON.stringify(output).includes(key));
+    assert.ok(!JSON.stringify(output).includes('secret body'));
   });
 });
