@@ -10,7 +10,10 @@
     "outDir": "dist",
     "declaration": true,
     "sourceMap": false,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts"
