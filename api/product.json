@@ -1,0 +1,21 @@
+{
+  "name": "dokukiste-mcp-server",
+  "version": "1.0.0",
+  "title": "DokuKiste MCP Server",
+  "profile": "standard",
+  "tools": {
+    "dokukiste_search_documents": "POST /api/documents/search",
+    "dokukiste_get_document": "GET /api/documents/detail/{id}",
+    "dokukiste_download_document": "GET /api/documents/{id}/download",
+    "dokukiste_upload_document": "POST /api/documents/upload",
+    "dokukiste_list_documents": "GET /api/documents",
+    "dokukiste_list_companies": "GET /api/Companies",
+    "dokukiste_get_company": "GET /api/Companies/{id}",
+    "dokukiste_list_mail_accounts": "GET /api/mail/accounts",
+    "dokukiste_list_messages": "GET /api/mail/accounts/{id}/messages",
+    "dokukiste_get_message": "GET /api/mail/accounts/{id}/messages/{uid}",
+    "dokukiste_get_forecast": "GET /api/planning/forecast",
+    "dokukiste_get_version": "GET /api/Version",
+    "dokukiste_list_tags": "GET /api/tags"
+  }
+}

@@ -1,0 +1,21 @@
+name: DokuKiste API contract
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run contract:check
+        env:
+          DOKUKISTE_CONTRACT_URL: https://app.dokukiste.de/swagger/v1/swagger.json

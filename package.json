@@ -1,0 +1,60 @@
+{
+  "name": "dokukiste-mcp-server",
+  "version": "1.0.0",
+  "description": "DokuKiste MCP Server \u2014 the open Minicon connector for the current DokuKiste API",
+  "type": "module",
+  "bin": {
+    "dokukiste-mcp-server": "dist/index.js"
+  },
+  "exports": {
+    ".": "./dist/server.js"
+  },
+  "files": [
+    "dist",
+    "api",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "author": "Minicon eG",
+  "license": "MIT",
+  "homepage": "https://github.com/Minicon-eG/dokukiste-mcp-server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Minicon-eG/dokukiste-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Minicon-eG/dokukiste-mcp-server/issues"
+  },
+  "keywords": [
+    "mcp",
+    "dokukiste",
+    "minicon",
+    "documents",
+    "model-context-protocol",
+    "standard"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/chmod.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm test",
+    "start": "node dist/index.js",
+    "prepack": "npm run build",
+    "contract:check": "node scripts/check-contract.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
+    "@types/node": "^22.0.0",
+    "typescript": "~5.9.3"
+  }
+}

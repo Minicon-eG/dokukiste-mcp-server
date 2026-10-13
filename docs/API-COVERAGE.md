@@ -1,0 +1,134 @@
+# API coverage
+
+Baseline: public DokuKiste OpenAPI 3.0.4, API v13.80.0, verified against backend commit `9406030dd34d04f05c6ae9e51e82811fe64dba08`. No controller or DTO API changes exist between v13.80.0 and this commit. Only the public API specification and reviewed route metadata are included; backend source code is not distributed.
+
+This profile contains **729 reviewed HTTP operations**, including backward-compatible route aliases. The companion profile is disjoint. Read-only mode exposes only operations explicitly classified as read-only. The capabilities tool reports the actual instance version and available count.
+
+Live mode loads the instance's specification on startup. Reviewed methods/routes must still exist; schemas come from that instance. Newly added or unreviewed methods/routes are not automatically exposed. The weekly contract workflow detects changed/removed inputs and new unreviewed routes. Update the reviewed policy before releasing support for new operations.
+
+Browser login/registration/password flows, OAuth callbacks, webhook receivers and UI/infrastructure routes are deliberately excluded. Media and learning routes whose controller authorization is not part of the reviewed Web source are conservatively assigned to admin. The backend remains responsible for API-key scopes, feature flags, document visibility and tenant permissions; profile separation does not grant permission.
+
+| Domain | Operations |
+|---|---:|
+| AccountingAssets | 12 |
+| AccountingEBilanz | 3 |
+| AccountingExport | 2 |
+| AccountingImport | 6 |
+| AccountingJournalRevisions | 1 |
+| AccountingMandant | 2 |
+| AccountingOpos | 3 |
+| AccountingReconciliation | 5 |
+| AccountingReports | 3 |
+| AccountingVat | 4 |
+| AccountingVatSplitCorrection | 1 |
+| AccountingYearEnd | 9 |
+| ActionGroups | 5 |
+| Agent | 1 |
+| AiChat | 1 |
+| AiFeatures | 4 |
+| AiIconGeneration | 9 |
+| AiProcessingConsent | 3 |
+| Assistant | 1 |
+| BankAccounts | 2 |
+| BankHubConnect | 3 |
+| Banking | 3 |
+| BankingAllocations | 4 |
+| BankingMatching | 7 |
+| BookingFieldSuggestions | 3 |
+| BookingLines | 5 |
+| BugReport | 5 |
+| BulkBooking | 1 |
+| BulkOperations | 18 |
+| CalendarEvent | 6 |
+| ChartOfAccounts | 5 |
+| CommentAttachments | 2 |
+| Comments | 8 |
+| Companies | 11 |
+| CrossMandantPlanLinks | 3 |
+| Dashboard | 5 |
+| DatevAccountProxy | 4 |
+| Document Layouts | 12 |
+| DocumentChecked | 2 |
+| DocumentCompose | 2 |
+| DocumentFilter | 8 |
+| DocumentFollowup | 9 |
+| DocumentLayouts | 2 |
+| DocumentOperations | 12 |
+| DocumentRules | 17 |
+| DocumentSearch | 14 |
+| DocumentSplitReview | 8 |
+| DocumentTypes | 3 |
+| Duplicates | 9 |
+| EInvoice | 3 |
+| Eigenbeleg | 11 |
+| EmlDocument | 2 |
+| Favorites | 3 |
+| FeatureRequest | 3 |
+| Features | 1 |
+| FieldMetadata | 3 |
+| FileUpload | 9 |
+| Gobd | 5 |
+| GobdProcessDocumentation | 6 |
+| HybridSearch | 3 |
+| ImportExport | 11 |
+| IssueBot | 3 |
+| LinkedDocuments | 3 |
+| LoanManagement | 12 |
+| Mail | 47 |
+| MailAi | 18 |
+| MailAttachmentIgnores | 4 |
+| MailContacts | 22 |
+| MailConversation | 2 |
+| MailConversations | 12 |
+| MailDeliveryStatus | 1 |
+| MailDocumentSource | 2 |
+| MailExport | 5 |
+| MailFollowupFlag | 9 |
+| MailIncognito | 8 |
+| MailInvoiceImport | 5 |
+| MailRules | 17 |
+| MailTemplates | 5 |
+| MailWorkflow | 8 |
+| NotificationHistory | 6 |
+| Notifications | 5 |
+| OneTimeShare | 3 |
+| PageContentRag | 3 |
+| PdfFileUpdate | 3 |
+| PdfFiles | 30 |
+| PdfProcessing | 4 |
+| PlanContainer | 13 |
+| PlanGroup | 4 |
+| PlanningAccountBalance | 2 |
+| PlanningAi | 2 |
+| PlanningBankBalances | 1 |
+| PlanningBankBookings | 2 |
+| PlanningChart | 1 |
+| PlanningCostCenterReport | 2 |
+| PlanningForecast | 1 |
+| PlanningInvoiceLinks | 3 |
+| PlanningReport | 21 |
+| PlanningSeedCategories | 1 |
+| PlanningState | 2 |
+| PlanningSuggestions | 1 |
+| PlanningUstConfig | 2 |
+| PlanningVerifiedBookingCosts | 1 |
+| Print | 2 |
+| Rag | 9 |
+| ReleaseNotes | 6 |
+| RuleCatalog | 2 |
+| RulesGraph | 1 |
+| SavedSearch | 6 |
+| SavedTree | 5 |
+| SevDeskUsers | 1 |
+| Signature | 10 |
+| Statistics | 12 |
+| Subscriptions | 4 |
+| SuggestionFeedback | 4 |
+| Suggestions | 14 |
+| Tags | 6 |
+| TaxTypes | 2 |
+| Thumbnails | 2 |
+| TransactionDocumentRules | 14 |
+| User | 2 |
+| ValidationResults | 2 |
+| Version | 1 |
