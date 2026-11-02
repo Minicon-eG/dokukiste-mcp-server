@@ -1,6 +1,6 @@
 {
   "name": "dokukiste-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DokuKiste MCP Server \u2014 the open Minicon connector for the current DokuKiste API",
   "type": "module",
   "bin": {
