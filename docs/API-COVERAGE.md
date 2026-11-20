@@ -1,24 +1,28 @@
 # API coverage
 
-Baseline: public DokuKiste OpenAPI 3.0.4, API v13.80.0, verified against backend commit `9406030dd34d04f05c6ae9e51e82811fe64dba08`. No controller or DTO API changes exist between v13.80.0 and this commit. Only the public API specification and reviewed route metadata are included; backend source code is not distributed.
+Baseline: public DokuKiste OpenAPI 3.0.4, API v13.90.0, verified against backend release commit `ac692f81685479a1c65a32375683da97d68bf7b1`. Only the public API specification and reviewed route metadata are included; backend source code is not distributed.
 
-This profile contains **729 reviewed HTTP operations**, including backward-compatible route aliases. The companion profile is disjoint. Read-only mode exposes only operations explicitly classified as read-only. The capabilities tool reports the actual instance version and available count.
+This profile contains **860 reviewed HTTP operations**, including backward-compatible route aliases. The companion profile is disjoint. Read-only mode exposes only operations explicitly classified as read-only. The capabilities tool reports the actual instance version and available count.
 
 Live mode loads the instance's specification on startup. Reviewed methods/routes must still exist; schemas come from that instance. Newly added or unreviewed methods/routes are not automatically exposed. The weekly contract workflow detects changed/removed inputs and new unreviewed routes. Update the reviewed policy before releasing support for new operations.
 
-Browser login/registration/password flows, OAuth callbacks, webhook receivers, browser video playback/media and UI/infrastructure routes are deliberately excluded. Media and learning routes whose controller authorization is not part of the reviewed Web source are conservatively assigned to admin. The backend remains responsible for API-key scopes, feature flags, document visibility and tenant permissions; profile separation does not grant permission.
+Browser login/registration/password flows, OAuth callbacks, webhook receivers, public token-based signing links for external recipients, browser video playback/media and UI/infrastructure routes are deliberately excluded. Media and learning routes whose controller authorization is not part of the reviewed Web source are conservatively assigned to admin. The backend remains responsible for API-key scopes, feature flags, document visibility and tenant permissions; profile separation does not grant permission.
 
 | Domain | Operations |
 |---|---:|
 | AccountingAssets | 12 |
+| AccountingCatalog | 7 |
 | AccountingEBilanz | 3 |
+| AccountingElster | 4 |
+| AccountingEuer | 3 |
 | AccountingExport | 2 |
 | AccountingImport | 6 |
 | AccountingJournalRevisions | 1 |
 | AccountingMandant | 2 |
 | AccountingOpos | 3 |
 | AccountingReconciliation | 5 |
-| AccountingReports | 3 |
+| AccountingReports | 4 |
+| AccountingTaxProfile | 2 |
 | AccountingVat | 4 |
 | AccountingVatSplitCorrection | 1 |
 | AccountingYearEnd | 9 |
@@ -27,6 +31,7 @@ Browser login/registration/password flows, OAuth callbacks, webhook receivers, b
 | AiChat | 1 |
 | AiFeatures | 4 |
 | AiIconGeneration | 9 |
+| AiPrivacyPolicy | 1 |
 | AiProcessingConsent | 3 |
 | Assistant | 1 |
 | BankAccounts | 2 |
@@ -40,10 +45,12 @@ Browser login/registration/password flows, OAuth callbacks, webhook receivers, b
 | BulkBooking | 1 |
 | BulkOperations | 18 |
 | CalendarEvent | 6 |
+| CalendarSubscription | 3 |
 | ChartOfAccounts | 5 |
 | CommentAttachments | 2 |
 | Comments | 8 |
 | Companies | 11 |
+| Companion | 2 |
 | CrossMandantPlanLinks | 3 |
 | Dashboard | 5 |
 | DatevAccountProxy | 4 |
@@ -55,11 +62,13 @@ Browser login/registration/password flows, OAuth callbacks, webhook receivers, b
 | DocumentLayouts | 2 |
 | DocumentOperations | 12 |
 | DocumentRules | 17 |
-| DocumentSearch | 14 |
+| DocumentSearch | 16 |
+| DocumentSignatures | 1 |
 | DocumentSplitReview | 8 |
 | DocumentTypes | 3 |
+| Dunning | 18 |
 | Duplicates | 9 |
-| EInvoice | 3 |
+| EInvoice | 5 |
 | Eigenbeleg | 11 |
 | EmlDocument | 2 |
 | Favorites | 3 |
@@ -68,31 +77,33 @@ Browser login/registration/password flows, OAuth callbacks, webhook receivers, b
 | FieldMetadata | 3 |
 | FileUpload | 9 |
 | Gobd | 5 |
-| GobdProcessDocumentation | 6 |
+| GobdProcessDocumentation | 7 |
 | HybridSearch | 3 |
 | ImportExport | 11 |
-| IssueBot | 3 |
-| LinkedDocuments | 3 |
+| LinkedDocuments | 4 |
 | LoanManagement | 12 |
 | Mail | 47 |
 | MailAi | 18 |
 | MailAttachmentIgnores | 4 |
 | MailContacts | 22 |
 | MailConversation | 2 |
-| MailConversations | 12 |
+| MailConversations | 13 |
 | MailDeliveryStatus | 1 |
 | MailDocumentSource | 2 |
 | MailExport | 5 |
 | MailFollowupFlag | 9 |
 | MailIncognito | 8 |
 | MailInvoiceImport | 5 |
-| MailRules | 17 |
+| MailRules | 20 |
 | MailTemplates | 5 |
 | MailWorkflow | 8 |
+| MandantSigningCertificate | 1 |
 | NotificationHistory | 6 |
 | Notifications | 5 |
 | OneTimeShare | 3 |
+| OutgoingInvoices | 19 |
 | PageContentRag | 3 |
+| PaymentSchedule | 2 |
 | PdfFileUpdate | 3 |
 | PdfFiles | 30 |
 | PdfProcessing | 4 |
@@ -114,12 +125,17 @@ Browser login/registration/password flows, OAuth callbacks, webhook receivers, b
 | PlanningVerifiedBookingCosts | 1 |
 | Print | 2 |
 | Rag | 9 |
+| RecurringInvoices | 10 |
 | ReleaseNotes | 6 |
 | RuleCatalog | 2 |
 | RulesGraph | 1 |
+| SalesDocumentSigning | 3 |
+| SalesDocuments | 15 |
+| SalesTemplates | 29 |
 | SavedSearch | 6 |
 | SavedTree | 5 |
 | SevDeskUsers | 1 |
+| Signatory | 3 |
 | Signature | 10 |
 | Statistics | 12 |
 | Subscriptions | 4 |
