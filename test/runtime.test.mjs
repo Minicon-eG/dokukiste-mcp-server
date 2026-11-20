@@ -176,3 +176,17 @@ test('snapshot preserves request properties named examples', () => {
  const referenced = operation.inputSchema.properties.body.$ref.replace('#/$defs/', '');
  assert.ok(operation.inputSchema.$defs[referenced].properties.examples);
 });
+
+test('reminder-to-invoice workflow is reviewed: read-only suggestions, confirmed link, public signing excluded', () => {
+  const standard = catalog(snapshot, policy, 'standard');
+  const admin = catalog(snapshot, policy, 'admin');
+  const registry = operations(standard, false);
+  const suggestions = registry.find('GET /api/PdfFiles/{id}/linked-documents/reminder-suggestions');
+  assert.ok(suggestions.readOnly);
+  assert.deepEqual(suggestions.inputSchema.properties.path.required, ['id']);
+  assert.throws(() => registry.find('POST /api/PdfFiles/{id}/linked-documents'), /unavailable/);
+  assert.ok(operations(standard, true).find('POST /api/PdfFiles/{id}/linked-documents').inputSchema.required.includes('confirm'));
+  assert.ok(admin.operations.some(operation => operation.id === 'PUT /api/accounting/signatory/{mandant}'));
+  assert.ok([...standard.operations, ...admin.operations].every(operation => !operation.path.startsWith('/api/public/signing/')));
+  assert.ok([...standard.operations, ...admin.operations].every(operation => !operation.path.startsWith('/api/issue-bot/')));
+});

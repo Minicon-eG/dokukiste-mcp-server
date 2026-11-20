@@ -1,6 +1,6 @@
 {
-  "backendVersion": "13.80.0",
-  "backendCommit": "9406030dd34d04f05c6ae9e51e82811fe64dba08",
+  "backendVersion": "13.90.0",
+  "backendCommit": "ac692f81685479a1c65a32375683da97d68bf7b1",
   "operations": {
     "GET /Account/Login": {
       "profile": "excluded",
@@ -4028,24 +4028,6 @@
       "readOnly": false,
       "reason": "Controller authorization and product boundary"
     },
-    "GET /api/issue-bot/providers": {
-      "profile": "standard",
-      "tag": "IssueBot",
-      "readOnly": true,
-      "reason": "Controller authorization and product boundary"
-    },
-    "POST /api/issue-bot/chat": {
-      "profile": "standard",
-      "tag": "IssueBot",
-      "readOnly": false,
-      "reason": "Controller authorization and product boundary"
-    },
-    "POST /api/issue-bot/create-issue": {
-      "profile": "standard",
-      "tag": "IssueBot",
-      "readOnly": false,
-      "reason": "Controller authorization and product boundary"
-    },
     "GET /api/learning/courses": {
       "profile": "admin",
       "tag": "Learning",
@@ -7854,6 +7836,888 @@
       "profile": "admin",
       "tag": "Workflows",
       "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/catalog/templates": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/catalog/templates/{id}": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/catalog/{mandant}/apply-template/{id}": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/catalog/{mandant}": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/catalog/{mandant}": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/catalog/{mandant}/{itemId}": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/catalog/{mandant}/{itemId}": {
+      "profile": "standard",
+      "tag": "AccountingCatalog",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/elster/euer/{year}": {
+      "profile": "standard",
+      "tag": "AccountingElster",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/elster/euer/{year}/xml": {
+      "profile": "standard",
+      "tag": "AccountingElster",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/elster/euer/{year}/delivery": {
+      "profile": "standard",
+      "tag": "AccountingElster",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/elster/cockpit": {
+      "profile": "standard",
+      "tag": "AccountingElster",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/euer/{year}": {
+      "profile": "standard",
+      "tag": "AccountingEuer",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/euer/{year}/kz/{kz}": {
+      "profile": "standard",
+      "tag": "AccountingEuer",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/euer/{year}/pdf": {
+      "profile": "standard",
+      "tag": "AccountingEuer",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/opos/payment-block": {
+      "profile": "admin",
+      "tag": "AccountingPaymentHold",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/opos/payment-block": {
+      "profile": "admin",
+      "tag": "AccountingPaymentHold",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/opos/payment-waiver": {
+      "profile": "admin",
+      "tag": "AccountingPaymentHold",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/opos/payment-waiver": {
+      "profile": "admin",
+      "tag": "AccountingPaymentHold",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/journal/{id}/approve": {
+      "profile": "standard",
+      "tag": "AccountingReports",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/tax-profiles": {
+      "profile": "standard",
+      "tag": "AccountingTaxProfile",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/tax-profiles/{mandant}": {
+      "profile": "standard",
+      "tag": "AccountingTaxProfile",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/tax-profiles/{mandant}": {
+      "profile": "admin",
+      "tag": "AccountingTaxProfile",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/ai/privacy-policy": {
+      "profile": "standard",
+      "tag": "AiPrivacyPolicy",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/v1/calendar/subscriptions": {
+      "profile": "standard",
+      "tag": "CalendarSubscription",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/v1/calendar/subscriptions": {
+      "profile": "standard",
+      "tag": "CalendarSubscription",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/v1/calendar/subscriptions/{id}": {
+      "profile": "standard",
+      "tag": "CalendarSubscription",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/companion/chat": {
+      "profile": "standard",
+      "tag": "Companion",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/companion/issue": {
+      "profile": "standard",
+      "tag": "Companion",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/v1/documents/search/saved-filter/{id}/ids": {
+      "profile": "standard",
+      "tag": "DocumentSearch",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/documents/search/saved-filter/{id}/ids": {
+      "profile": "standard",
+      "tag": "DocumentSearch",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/documents/{documentId}/signatures": {
+      "profile": "standard",
+      "tag": "DocumentSignatures",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/proposals": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoice-dunning/run": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/reminders": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/invoices/{invoiceId}": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/settings/{mandant}": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/invoice-dunning/settings/{mandant}": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoice-dunning/blocks": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/invoice-dunning/blocks": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/invoice-dunning/customers/kind": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoice-dunning/send-batch": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/dunned-documents": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/{reminderId}": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/invoice-dunning/{reminderId}": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoice-dunning/{reminderId}/finalize": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/{reminderId}/pdf": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoice-dunning/{reminderId}/mail-draft": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoice-dunning/{reminderId}/send": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoice-dunning/{reminderId}/mark-sent": {
+      "profile": "standard",
+      "tag": "Dunning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/einvoice/document/{documentId}": {
+      "profile": "standard",
+      "tag": "EInvoice",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/einvoice/document/{documentId}/xml": {
+      "profile": "standard",
+      "tag": "EInvoice",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/gobd/verfahrensdokumentation/vorschlag": {
+      "profile": "standard",
+      "tag": "GobdProcessDocumentation",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/PdfFiles/{id}/linked-documents/reminder-suggestions": {
+      "profile": "standard",
+      "tag": "LinkedDocuments",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/v1/mail/conversations/by-mail": {
+      "profile": "standard",
+      "tag": "MailConversations",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/v1/mail/rules/{id}/run-once/job": {
+      "profile": "standard",
+      "tag": "MailRules",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/v1/mail/rules/{id}/run-on/job": {
+      "profile": "standard",
+      "tag": "MailRules",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/v1/mail/accounts/{id}/folders/run-rules/job": {
+      "profile": "standard",
+      "tag": "MailRules",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/tax-profiles/{mandant}/signing-certificate": {
+      "profile": "standard",
+      "tag": "MandantSigningCertificate",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/{id}": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/invoices/{id}": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/invoices/{id}": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/{id}/finalize": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/{id}/credit-note": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/{id}/payment-check": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/{id}/cancel": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/{id}/payments": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/{id}/mark-sent": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/{id}/send": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/{id}/mail-draft": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/mail-template/{mandant}": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/invoices/mail-template/{mandant}": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/match-candidates": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/{id}/pdf": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/invoices/{id}/xml": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/invoices/preview": {
+      "profile": "standard",
+      "tag": "OutgoingInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/pdffiles/{id}/payment-schedule": {
+      "profile": "standard",
+      "tag": "PaymentSchedule",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/pdffiles/{id}/payment-schedule": {
+      "profile": "standard",
+      "tag": "PaymentSchedule",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/public/signing/{token}": {
+      "profile": "excluded",
+      "tag": "PublicSigning",
+      "readOnly": true,
+      "reason": "Public token-based signing for external recipients is outside the operator API"
+    },
+    "GET /api/public/signing/{token}/pdf": {
+      "profile": "excluded",
+      "tag": "PublicSigning",
+      "readOnly": true,
+      "reason": "Public token-based signing for external recipients is outside the operator API"
+    },
+    "POST /api/public/signing/{token}/accept": {
+      "profile": "excluded",
+      "tag": "PublicSigning",
+      "readOnly": false,
+      "reason": "Public token-based signing for external recipients is outside the operator API"
+    },
+    "POST /api/public/signing/{token}/reject": {
+      "profile": "excluded",
+      "tag": "PublicSigning",
+      "readOnly": false,
+      "reason": "Public token-based signing for external recipients is outside the operator API"
+    },
+    "POST /api/public/signing/{token}/receipt": {
+      "profile": "excluded",
+      "tag": "PublicSigning",
+      "readOnly": false,
+      "reason": "Public token-based signing for external recipients is outside the operator API"
+    },
+    "GET /api/accounting/recurring-invoices": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/recurring-invoices": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/recurring-invoices/{id}": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/recurring-invoices/{id}": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/recurring-invoices/{id}": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/recurring-invoices/{id}/run-now": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/recurring-invoices/{id}/pause": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/recurring-invoices/{id}/resume": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/recurring-invoices/{id}/history": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/recurring-invoices/preview": {
+      "profile": "standard",
+      "tag": "RecurringInvoices",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/sales-documents/{kind}": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/sales-documents/{kind}/{id}": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/sales-documents/{kind}/{id}": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/sales-documents/{kind}/{id}": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/finalize": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/accept": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/reject": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/mark-sent": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/sales-documents/{kind}/{id}/mail-draft": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/send": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/sales-documents/{kind}/{id}/pdf": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/preview": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/convert/{target}": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/convert-to-invoice": {
+      "profile": "standard",
+      "tag": "SalesDocuments",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/signing-link": {
+      "profile": "standard",
+      "tag": "SalesDocumentSigning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/sales-documents/{kind}/{id}/receipt": {
+      "profile": "standard",
+      "tag": "SalesDocumentSigning",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/sales-documents/{kind}/{id}/signatures": {
+      "profile": "standard",
+      "tag": "SalesDocumentSigning",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/placeholders": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/preview": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/suggestion": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/payment-terms": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/payment-terms": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/templates/{mandant}/payment-terms/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/templates/{mandant}/payment-terms/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/payment-terms/{id}/default": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/delivery-terms": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/delivery-terms": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/templates/{mandant}/delivery-terms/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/templates/{mandant}/delivery-terms/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/delivery-terms/{id}/default": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/texts": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/texts": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/templates/{mandant}/texts/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/templates/{mandant}/texts/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/texts/{id}/default": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/mails": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/mails": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/templates/{mandant}/mails/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/templates/{mandant}/mails/{id}": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "POST /api/accounting/templates/{mandant}/mails/{id}/default": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/customer-defaults": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/templates/{mandant}/customer-defaults": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/templates/{mandant}/customer-defaults": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/templates/{mandant}/defaults": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/templates/{mandant}/defaults": {
+      "profile": "standard",
+      "tag": "SalesTemplates",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/signatory/{mandant}": {
+      "profile": "standard",
+      "tag": "Signatory",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/signatory/{mandant}": {
+      "profile": "admin",
+      "tag": "Signatory",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "PUT /api/accounting/signatory/{mandant}/images/{role}": {
+      "profile": "admin",
+      "tag": "Signatory",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "DELETE /api/accounting/signatory/{mandant}/images/{role}": {
+      "profile": "admin",
+      "tag": "Signatory",
+      "readOnly": false,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/signatory/{mandant}/images/{role}": {
+      "profile": "standard",
+      "tag": "Signatory",
+      "readOnly": true,
+      "reason": "Controller authorization and product boundary"
+    },
+    "GET /api/accounting/signatory/mail-signature": {
+      "profile": "standard",
+      "tag": "Signatory",
+      "readOnly": true,
       "reason": "Controller authorization and product boundary"
     }
   }
